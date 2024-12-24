@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <link rel="icon" type="image/png" href="favicon.ico"/>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,6 +91,21 @@
         <ul id="taskList"></ul>
     </div>
     <script>
+
+        const setFavicon = (emoji) => {
+          const canvas = document.createElement('canvas');
+          canvas.height = 32;
+          canvas.width = 32;
+        
+          const ctx = canvas.getContext('2d');
+          ctx.font = '28px serif';
+          ctx.fillText(emoji, -2, 24);
+        
+          const favicon = document.querySelector('link[rel=icon]');
+          if (favicon) { favicon.href = canvas.toDataURL(); }
+        }
+        
+        setFavicon('🐓');
         function addTask() {
             const taskInput = document.getElementById('taskInput');
             const taskText = taskInput.value.trim();
